@@ -20,7 +20,7 @@ public class CartServiceImpl implements ICartService {
     public List<CartResponse> getAll() {
         return repository.findAll()
                 .stream()
-                .map(mapper::of)
+                .map(mapper::convertToCartResponse)
                 .toList();
     }
 }

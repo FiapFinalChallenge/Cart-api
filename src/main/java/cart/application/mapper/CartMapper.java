@@ -1,5 +1,6 @@
 package cart.application.mapper;
 
+import cart.application.dto.request.CartRequest;
 import cart.application.dto.response.CartResponse;
 import cart.domain.model.Cart;
 import org.mapstruct.Mapper;
@@ -10,5 +11,8 @@ public interface CartMapper {
 
     @Mapping(target = "id", source = "cart.id")
     @Mapping(target = "amount", source = "cart.amount")
-    CartResponse of(Cart cart);
+    CartResponse convertToCartResponse(Cart cart);
+
+    @Mapping(target = "amount", source = "cartRequest.amount")
+    Cart convertToCart(CartRequest cartRequest);
 }
