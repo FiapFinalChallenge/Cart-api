@@ -1,4 +1,6 @@
 package cart.application.dto.request;
 
-public record CartRequest(Integer amount) {
+import java.util.Set;
+
+public record CartRequest(Long userId, Set<CartItemRequest> items) {
 }

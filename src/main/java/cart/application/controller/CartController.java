@@ -1,6 +1,7 @@
 package cart.application.controller;
 
 import cart.application.controller.contract.ICartController;
+import cart.application.dto.request.CartRequest;
 import cart.application.dto.response.CartResponse;
 import cart.domain.service.contract.ICartService;
 import lombok.RequiredArgsConstructor;
@@ -19,5 +20,25 @@ public class CartController implements ICartController {
     @Override
     public List<CartResponse> getAll() {
         return service.getAll();
+    }
+
+    @Override
+    public CartResponse getById(Long id) {
+        return service.getById(id);
+    }
+
+    @Override
+    public CartResponse create(CartRequest cartRequest) {
+        return service.create(cartRequest);
+    }
+
+    @Override
+    public CartResponse update(Long id, CartRequest cartRequest) {
+        return service.update(id, cartRequest);
+    }
+
+    @Override
+    public void deleteById(Long id) {
+        service.deleteById(id);
     }
 }

@@ -1,4 +1,12 @@
 package cart.application.dto.response;
 
-public record CartResponse(Long id, Integer amount) {
+import java.time.LocalDateTime;
+import java.util.List;
+
+public record CartResponse(
+        Long id,
+        Long userId,
+        List<CartItemResponse> items,
+        LocalDateTime createdAt,
+        LocalDateTime updatedAt) {
 }
