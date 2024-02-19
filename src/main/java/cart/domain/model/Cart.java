@@ -5,6 +5,7 @@ import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.Set;
 
@@ -27,6 +28,9 @@ public class Cart {
     @JoinColumn(name = "cart_id")
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<CartItem> items;
+
+    @Column(name = "total_value", nullable = false)
+    private BigDecimal totalValue = BigDecimal.ZERO;
 
     @CreationTimestamp
     @Column(name = "created_at", nullable = false, updatable = false)
