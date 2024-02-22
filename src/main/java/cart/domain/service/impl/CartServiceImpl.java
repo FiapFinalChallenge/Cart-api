@@ -21,7 +21,7 @@ import java.util.Set;
 public class CartServiceImpl implements ICartService {
 
     private static final String AMOUNT_EXCEED = "Requested amount exceeds available quantity for item ID: ";
-    private static final String CART_NOT_FOUND = "Not found for cart ID: ";
+    private static final String CART_NOT_FOUND = "Not found cart ID: ";
     private final ICartRepository repository;
     private final ItemClient itemClient;
     private final CartMapper mapper;
