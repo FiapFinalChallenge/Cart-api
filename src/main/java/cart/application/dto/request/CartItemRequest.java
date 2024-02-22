@@ -1,4 +1,6 @@
 package cart.application.dto.request;
 
-public record CartItemRequest(Long itemId, Integer amount) {
+import jakarta.validation.constraints.NotNull;
+
+public record CartItemRequest(@NotNull Long itemId, @NotNull Integer amount) {
 }

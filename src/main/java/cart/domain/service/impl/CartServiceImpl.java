@@ -8,7 +8,7 @@ import cart.domain.repository.ICartRepository;
 import cart.domain.service.contract.ICartService;
 import cart.infra.external.ItemClient;
 import cart.infra.external.dto.response.ItemResponse;
-import jakarta.ws.rs.NotFoundException;
+import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -20,7 +20,8 @@ import java.util.Set;
 @RequiredArgsConstructor
 public class CartServiceImpl implements ICartService {
 
-    private final String AMOUNT_EXCEED = "Requested amount exceeds available quantity for item ID: ";
+    private static final String AMOUNT_EXCEED = "Requested amount exceeds available quantity for item ID: ";
+    private static final String CART_NOT_FOUND = "Not found for cart ID: ";
     private final ICartRepository repository;
     private final ItemClient itemClient;
     private final CartMapper mapper;
@@ -38,7 +39,7 @@ public class CartServiceImpl implements ICartService {
     public CartResponse getById(Long id) {
         return mapper.convertToCartResponse(repository
                 .findById(id)
-                .orElseThrow(() -> new NotFoundException("Cart not found")));
+                .orElseThrow(() -> new EntityNotFoundException(CART_NOT_FOUND + id)));
     }
 
     @Override
@@ -52,6 +53,8 @@ public class CartServiceImpl implements ICartService {
     @Override
     public CartResponse update(Long id, CartRequest cartRequest) {
         getById(id);
+        cartRequest.setTotalValue(getTotalValue(cartRequest.getItems()));
+
         return mapper.convertToCartResponse(repository
                 .save(mapper.convertToCartWithId(cartRequest, id)));
     }
