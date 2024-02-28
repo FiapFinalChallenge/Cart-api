@@ -6,7 +6,7 @@ import cart.application.dto.response.CartResponse;
 import cart.application.mapper.CartMapper;
 import cart.domain.repository.ICartRepository;
 import cart.domain.service.contract.ICartService;
-import cart.infra.external.ItemClient;
+import cart.infra.external.client.ItemClient;
 import cart.infra.external.dto.response.ItemResponse;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;

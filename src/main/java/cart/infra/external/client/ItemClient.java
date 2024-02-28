@@ -1,4 +1,4 @@
-package cart.infra.external;
+package cart.infra.external.client;
 
 import cart.infra.external.dto.response.ItemResponse;
 import org.springframework.cloud.openfeign.FeignClient;
