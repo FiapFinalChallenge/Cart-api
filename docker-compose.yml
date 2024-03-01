@@ -22,7 +22,7 @@ services:
   spring-cloud-config-server:
     image: marcoscosta01/spring-cloud-service:latest
     ports:
-      - "8888:8888"
+      - "8080:8080"
     depends_on:
       - eureka-server
     networks:
